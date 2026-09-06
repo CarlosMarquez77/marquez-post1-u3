@@ -12,11 +12,10 @@ class EmisionCertificadoTest {
         var firma = new FirmaDigitalService();
         var correo = new EnvioCorreoService();
 
-        ServicioCertificadosImpl colaborador =
-            new ServicioCertificadosImpl(validador, generador, firma, correo);
+        ServicioCertificados colaborador = new ServicioCertificadosImpl(validador, generador, firma, correo);
+        SolicitudCertificado solicitud = new SolicitudCertificado("EVT-001", "PART-123", "Ana Ríos", "ana@correo.com");
 
-        assertDoesNotThrow(() ->
-            colaborador.emitir("EVT-001", "PART-123", "Ana Ríos", "ana@correo.com"));
+        assertDoesNotThrow(() -> colaborador.emitir(solicitud));
     }
 
     @Test
